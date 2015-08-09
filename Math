@@ -1,0 +1,21 @@
+<?php
+
+namespace TobyMaxham\Maths;
+
+class Math
+{
+
+   private $result = 0;
+
+   public function __toString()
+   {
+      return $this->result;
+   }
+
+   public function add($var)
+   {
+      $this->result += $var;
+      return $this;
+   }
+
+}
