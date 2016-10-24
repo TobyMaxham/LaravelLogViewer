@@ -1,0 +1,1 @@
+@extends('maxham-log-viewer::log_default')
