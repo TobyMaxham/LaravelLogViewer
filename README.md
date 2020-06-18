@@ -5,6 +5,11 @@
 [![Latest Unstable Version](https://poser.pugx.org/tobymaxham/log-viewer/v/unstable)](https://packagist.org/packages/tobymaxham/log-viewer)
 [![License](https://poser.pugx.org/tobymaxham/log-viewer/license)](https://packagist.org/packages/tobymaxham/log-viewer)
 
+
+## Info
+You will need at least **PHP 7.2** and **Laravel 6** to use this. If you have an older Laravel installation, use the Version `v1.1`.
+
+
 ## Installation
 
 Very simple installation and implementation.
