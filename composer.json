@@ -2,16 +2,16 @@
     "name": "tobymaxham/log-viewer",
     "description": "A Laravel log reader",
     "license": "MIT",
-    "keywords": ["log", "log-reader", "log-viewer", "logging"],
+    "keywords": ["log", "log-reader", "log-viewer", "logging", "zhylon"],
     "authors": [
         {
             "name": "Tobias Maxham",
-            "email": "git2015@maxham.de"
+            "email": "git2020@maxham.de"
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "rap2hpoutre/laravel-log-viewer": "*"
+        "php": "^7.2",
+        "rap2hpoutre/laravel-log-viewer": "^1.6"
     },
     "autoload": {
         "psr-4": {
