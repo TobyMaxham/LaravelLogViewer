@@ -5,33 +5,45 @@ namespace TobyMaxham\Logger;
 use Illuminate\Routing\Controller;
 
 /**
- * Class LogViewerController
- * @package TobyMaxham\Logger
- * @author Tobias Maxham <git2016@maxham.de>
+ * @author Tobias Maxham <git2020@maxham.de>
  */
 class LogViewerController extends Controller
 {
+
+    /**
+     * @var LaravelLogViewer
+     */
+    private $log_viewer;
+
+    /**
+     * LogViewerController constructor.
+     */
+    public function __construct()
+    {
+        $this->log_viewer = new LaravelLogViewer();
+    }
+
     /**
      * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function index()
     {
-        if (\Input::get('l')) {
-            LaravelLogViewer::setFile(base64_decode(\Input::get('l')));
+        if (request()->get('l')) {
+            LaravelLogViewer::setFile(base64_decode(request()->get('l')));
         }
 
-        if (\Input::get('dl'))
+        if (request()->get('dl'))
             return \Response::download(base64_decode(\Input::get('dl')));
 
-        if (\Input::has('del')) {
-            \File::delete(base64_decode(\Input::get('del')));
+        if (request()->has('del')) {
+            \File::delete(base64_decode(request()->get('del')));
             return \Redirect::to(\Request::url());
         }
 
         return view('maxham-log-viewer::log', [
-            'logs' => LaravelLogViewer::all(),
-            'files' => LaravelLogViewer::getFiles(true),
-            'current_file' => LaravelLogViewer::getFileName()
+            'logs' => $this->log_viewer->all(),
+            'files' => $this->log_viewer->getFiles(true),
+            'current_file' => $this->log_viewer->getFileName()
         ]);
     }
 }

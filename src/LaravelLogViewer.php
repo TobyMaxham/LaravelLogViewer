@@ -7,7 +7,7 @@ use Rap2hpoutre\LaravelLogViewer\LaravelLogViewer as RapViewer;
 /**
  * Class LaravelLogViewer
  * @package TobyMaxham\Logger
- * @author Tobias Maxham <git2016@maxham.de>
+ * @author Tobias Maxham <git2020@maxham.de>
  */
 class LaravelLogViewer extends RapViewer
 {
@@ -20,7 +20,7 @@ class LaravelLogViewer extends RapViewer
      * @param bool $basename
      * @return array
      */
-    public static function getFiles($basename = false)
+    public function getFiles($basename = false, $folder = '')
     {
         $files = glob(storage_path() . '/logs/*');
         $files = array_reverse($files);
@@ -43,7 +43,7 @@ class LaravelLogViewer extends RapViewer
      * @param $directories
      * @return array
      */
-    private static function recursiveFiles($directories)
+    private function recursiveFiles($directories)
     {
         $files = [];
 
@@ -66,7 +66,7 @@ class LaravelLogViewer extends RapViewer
     /**
      * @return string
      */
-    public static function getFileName()
+    public function getFileName()
     {
         if (is_null(self::$orgFile))
             return storage_path() . '/logs/' . parent::getFileName();
@@ -76,7 +76,7 @@ class LaravelLogViewer extends RapViewer
     /**
      * @param string $sFile
      */
-    public static function setFile($sFile)
+    public function setFile($sFile)
     {
         self::$orgFile = $sFile;
         parent::setFile(str_replace(storage_path() . '/logs/', '', $sFile));
