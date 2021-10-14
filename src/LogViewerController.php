@@ -37,21 +37,34 @@ class LogViewerController extends BaseController
         $this->request = app('request');
     }
 
+    public function filenameFor($key)
+    {
+        return base64_decode($this->request->input($key));
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View|\Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function index()
     {
         if (request()->get('l')) {
-            $this->log_viewer->setFile(base64_decode(request()->get('l')));
+            if(!file_exists($file = $this->filenameFor('l'))) {
+                return redirect($this->request->url());
+            }
+
+            $this->log_viewer->setFile($file);
         }
 
         if (request()->get('dl')) {
-            return response()->download(base64_decode($this->request->input('dl')));
+            if(!file_exists($file = $this->filenameFor('dl'))) {
+                return response('');
+            }
+
+            return response()->download($file);
         }
 
         if (request()->has('del')) {
-            app('files')->delete(base64_decode(request()->get('del')));
+            app('files')->delete($this->filenameFor('del'));
 
             return redirect($this->request->url());
         }
