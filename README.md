@@ -7,7 +7,7 @@
 
 
 ## Info
-You will need at least **PHP 7.2** and **Laravel 6** to use this. If you have an older Laravel installation, use the Version `v1.1`.
+You will need at least **PHP 8.2** and **Laravel 10** to use this. If you have an older Laravel installation, use the Version `v2.1.5` or `v1.1`.
 
 
 ## Installation
@@ -19,5 +19,5 @@ to the composer.json file.
 In your Laravel routes Files you can add the default Controller Action:
 
 ```php
-Route::get('log', '\TobyMaxham\Logger\LogViewerController@index');
+Route::get('log', [\TobyMaxham\Logger\LogViewerController::class, 'index']);
 ```

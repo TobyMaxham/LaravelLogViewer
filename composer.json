@@ -6,12 +6,12 @@
     "authors": [
         {
             "name": "Tobias Maxham",
-            "email": "git2020@maxham.de"
+            "email": "git@maxham.de"
         }
     ],
     "require": {
-        "php": "^7.2",
-        "rap2hpoutre/laravel-log-viewer": "^1.6"
+        "php": "^8.2",
+        "rap2hpoutre/laravel-log-viewer": "^2.3.0"
     },
     "autoload": {
         "psr-4": {

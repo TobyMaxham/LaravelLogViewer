@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <h1><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> @yield('title', 'Log Viewer')</h1>
-            <p class="text-muted"><i>@yield('creator', 'by Maxham.de')</i></p>
+            <p class="text-muted"><i>@section('creator') by <a href="https://github.com/TobyMaxham">TobyMaxham</a> @stop @yield('creator') </i></p>
             <div class="list-group">
                 @foreach($files as $file)
                     <a href="?l={{ base64_encode($file[1]) }}" class="list-group-item @if ($current_file == $file[1]) llv-active @endif">
